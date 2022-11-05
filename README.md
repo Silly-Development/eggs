@@ -1,2 +1,2 @@
-# eggs
-Pterodactyl Eggs We Use On Our Hosting
+# Info
+We have not created these eggs! This is just to show what we use!
