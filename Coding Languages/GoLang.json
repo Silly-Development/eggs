@@ -1,0 +1,52 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY SILLY DEVELOPMENT - panel.sillydev.co.uk",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2023-08-14T13:32:10+01:00",
+    "name": "Golang",
+    "author": "parker@parkervcp.com",
+    "description": null,
+    "features": null,
+    "docker_images": {
+        "ghcr.io\/parkervcp\/yolks:debian": "ghcr.io\/parkervcp\/yolks:debian"
+    },
+    "file_denylist": [],
+    "startup": ".\/${EXECUTABLE}",
+    "config": {
+        "files": "{}",
+        "startup": "{\r\n    \"done\": \":\/home\/container$\"\r\n}",
+        "logs": "{}",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\r\n# golang generic package\r\n\r\n\r\nif [ ! -d \/mnt\/server\/ ]; then\r\n    mkdir -p \/mnt\/server\/\r\nfi\r\n\r\ngo get ${GO_PACKAGE}\r\n\r\ncd src\/${GO_PACKAGE}\r\n\r\ngo get\r\n\r\ngo build\r\n\r\ncp -f ${EXECUTABLE} \/mnt\/server\/",
+            "container": "golang:1.15-buster",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "Go Package",
+            "description": "Go package to get and build",
+            "env_variable": "GO_PACKAGE",
+            "default_value": "PUTHERE",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string",
+            "field_type": "text"
+        },
+        {
+            "name": "Executable",
+            "description": "This is the executable from the build.",
+            "env_variable": "EXECUTABLE",
+            "default_value": "PUT HERE",
+            "user_viewable": true,
+            "user_editable": false,
+            "rules": "required|string",
+            "field_type": "text"
+        }
+    ]
+}
