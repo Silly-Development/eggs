@@ -27,3 +27,4 @@ If you are reading this it looks like you are looking to add an egg to your serv
 * [Dart](/Coding%20Languages/Dart.json)
 * [Deno](/Coding%20Languages/Deno.json)
 * [GoLang](/Coding%20Languages/GoLang.json)
+* [Rust](/Coding%20Languages/Rust.json)
