@@ -18,13 +18,5 @@ If you are reading this it looks like you are looking to add an egg to your serv
 
 ## [Coding Languages](/Coding%20Languages)
 
-* [C#](/generic/c%23/)
-* [dart](/generic/dart/)
-* [deno](/generic/deno/)
-* [golang](/generic/golang/)
-* [java](/generic/java/)
-* [lua](/generic/lua/)
-* [nodejs](/generic/nodejs/)
-* [nodemon](/generic/nodemon/)
-* [python](/generic/python/)
-* [rust](/generic/rust/)
+* [Nodejs](/Coding%20Languages/Nodejs.json)
+* [Python](/Coding%20Languages/Python.json)
