@@ -38,3 +38,7 @@ If you are reading this it looks like you are looking to add an egg to your serv
 
 * [MongoDB](/Databases/MongoDB.json)
 * [rethinkDB](/Databases/rethinkDB.json)
+
+## [Lavalink](/Lavalink)
+
+* [Lavalink](/Lavalink/Lavalink.json)
