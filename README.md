@@ -28,3 +28,4 @@ If you are reading this it looks like you are looking to add an egg to your serv
 * [Deno](/Coding%20Languages/Deno.json)
 * [GoLang](/Coding%20Languages/GoLang.json)
 * [Rust](/Coding%20Languages/Rust.json)
+* [TypeScript](/Coding%20Languages/TypeScript.json)
