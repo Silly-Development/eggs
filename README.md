@@ -25,3 +25,4 @@ If you are reading this it looks like you are looking to add an egg to your serv
 * [Lua](/Coding%20Languages/Lua.json)
 * [C#](/Coding%20Languages/C%23.json)
 * [Dart](/Coding%20Languages/Dart.json)
+* [Deno](/Coding%20Languages/Deno.json)
