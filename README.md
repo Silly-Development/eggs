@@ -24,3 +24,4 @@ If you are reading this it looks like you are looking to add an egg to your serv
 * [Python Custom Startup](/Coding%20Languages/Python%20Custom%20Startup.json)
 * [Lua](/Coding%20Languages/Lua.json)
 * [C#](/Coding%20Languages/C%23.json)
+* [Dart](/Coding%20Languages/Dart.json)
