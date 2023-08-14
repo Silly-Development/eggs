@@ -20,3 +20,5 @@ If you are reading this it looks like you are looking to add an egg to your serv
 
 * [Nodejs](/Coding%20Languages/Nodejs.json)
 * [Python](/Coding%20Languages/Python.json)
+* [Nodejs Custom Startup](/Coding%20Languages/Nodejs%20Custom%20Startup.json)
+* [Python Custom Startup](/Coding%20Languages/Python%20Custom%20Startup.json)
