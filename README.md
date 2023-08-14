@@ -51,3 +51,10 @@ If you are reading this it looks like you are looking to add an egg to your serv
 
 * [BetterCrewlink](/Among%20Us/BetterCrewlink.json)
 * [Crewlink](/Among%20Us/Crewlink.json)
+
+## [Software](/Software)
+
+* [5e Tools](/Software/5e%20Tools.json)
+* [Code Server](/Software/Code%20Server.json)
+* [Grafana](/Software/Grafana.json)
+* [Uptime Kuma](/Software/Uptime%20Kuma.json)
