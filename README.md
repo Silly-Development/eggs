@@ -46,3 +46,8 @@ If you are reading this it looks like you are looking to add an egg to your serv
 ## [TeamSpeak](/TeamSpeak)
 
 * [TeamSpeak](/TeamSpeak/TeamSpeak.json)
+
+## [Among Us](/Among%20Us)
+
+* [BetterCrewlink](/Among%20Us/BetterCrewlink.json)
+* [Crewlink](/Among%20Us/Crewlink.json)
