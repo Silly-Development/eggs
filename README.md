@@ -1,6 +1,11 @@
+> [!IMPORTANT]
+>
+> ### Archived:
+>
+> This respitory has been archived. It hasn't been updated for about a year, and loads has changed since.
 # Silly Development eggs repo
 
-Here we will upload all eggs we use on our [hosting](https://sillydev.co.uk)
+Here we will upload all eggs we use on our [hosting](https://sillydevelopment.co.uk)
 
 ## How to import an egg
 
