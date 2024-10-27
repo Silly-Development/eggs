@@ -2,7 +2,8 @@
 >
 > This is rarely updated. We are not accepting pull requests, and we will not help you with using these eggs.
 
-Here we will upload all eggs we use on our [hosting](https://sillydev.co.uk)
+Here we will upload all eggs we use on our [hosting](https://sillydev.co.uk).
+We are in no way claiming ownership of any of these eggs.
 
 ## How to import an egg
 
