@@ -1,0 +1,62 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY SILLY DEVELOPMENT",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2024-10-27T01:16:22+01:00",
+    "name": "Nginx",
+    "author": "info@finniedj.nl",
+    "description": null,
+    "features": null,
+    "docker_images": {
+        "ghcr.io\/finnie2006\/nginx-ptero": "ghcr.io\/finnie2006\/nginx-ptero"
+    },
+    "file_denylist": [],
+    "startup": "{{STARTUP_CMD}}; if [[ ! -z ${COMPOSER_MODULES} ]]; then composer require ${COMPOSER_MODULES} --working-dir=\/home\/containe\r\nr\/webroot; fi;",
+    "config": {
+        "files": "{\r\n    \"nginx\/conf.d\/default.conf\": {\r\n        \"parser\": \"file\",\r\n        \"find\": {\r\n            \"    listen \": \"    listen {{server.build.default.port}};\"\r\n        }\r\n    }\r\n}",
+        "startup": "{\r\n    \"done\": \"\",\r\n    \"userInteraction\": []\r\n}",
+        "logs": "{\r\n    \"custom\": false,\r\n    \"location\": \"logs\/latest.log\"\r\n}",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/ash\r\nlog() {\r\n    echo \"$(date +'%Y-%m-%d %H:%M:%S') - $1\"\r\n}\r\n\r\nsleep_and_log() {\r\n    sleep 2\r\n    log \"$1\"\r\n}\r\n\r\nlog \"Script starting. Sleeping for 2 seconds before installation...\"\r\nsleep 2\r\n\r\ncd \/mnt\/server || { log \"Failed to change directory to \/mnt\/server\"; sleep 1; exit 1; }\r\nsleep_and_log \"Changed directory to \/mnt\/server\"\r\n\r\napk --update add git || { log \"Failed to install git\"; sleep 1; exit 1; }\r\nsleep_and_log \"Git installed successfully\"\r\n\r\n# Cloning repo with nginx and php files\r\nlog \"Cloning repository...\"\r\ngit clone https:\/\/github.com\/finnie2006\/ptero-nginx .\/temp || { log \"Failed to clone repository\"; sleep 1; exit 1; }\r\nsleep_and_log \"Repository cloned successfully\"\r\n\r\n# Copying files\r\nlog \"Copying nginx, php-fpm, and webroot files...\"\r\ncp -r .\/temp\/nginx \/mnt\/server\/ || { log \"Failed to copy nginx files\"; sleep 1; exit 1; }\r\nsleep_and_log \"nginx files copied\"\r\n\r\ncp -r .\/temp\/php-fpm \/mnt\/server\/ || { log \"Failed to copy php-fpm files\"; sleep 1; exit 1; }\r\nsleep_and_log \"php-fpm files copied\"\r\n\r\ncp -r .\/temp\/webroot \/mnt\/server\/ || { log \"Failed to copy webroot files\"; sleep 1; exit 1; }\r\nsleep_and_log \"webroot files copied\"\r\n\r\ncp .\/temp\/start.sh \/mnt\/server\/ || { log \"Failed to copy start.sh\"; sleep 1; exit 1; }\r\nchmod +x \/mnt\/server\/start.sh || { log \"Failed to make start.sh executable\"; sleep 1; exit 1; }\r\nsleep_and_log \"start.sh copied and made executable\"\r\n\r\n# Cleaning up\r\nrm -rf .\/temp || { log \"Failed to remove temp directory\"; sleep 1; exit 1; }\r\nsleep_and_log \"Temp directory removed\"\r\n\r\n# Creating necessary directories\r\nlog \"Creating tmp and logs directories...\"\r\nmkdir \/mnt\/server\/tmp || { log \"Failed to create tmp directory\"; sleep 1; exit 1; }\r\nsleep_and_log \"tmp directory created\"\r\n\r\nmkdir \/mnt\/server\/logs || { log \"Failed to create logs directory\"; sleep 1; exit 1; }\r\nsleep_and_log \"logs directory created\"\r\n\r\n# Check if WordPress is required\r\nif [ \"${WORDPRESS}\" = \"false\" ] || [ \"${WORDPRESS}\" = \"0\" ]; then\r\n    sleep_and_log \"WordPress not requested. Install complete, go to http:\/\/ip:port\/\"\r\nelse\r\n    # Install WordPress\r\n    log \"Installing WordPress...\"\r\n    cd \/mnt\/server\/webroot || { log \"Failed to change directory to \/mnt\/server\/webroot\"; sleep 1; exit 1; }\r\n    sleep_and_log \"Changed directory to \/mnt\/server\/webroot\"\r\n    \r\n    wget http:\/\/wordpress.org\/latest.tar.gz || { log \"Failed to download WordPress\"; sleep 1; exit 1; }\r\n    sleep_and_log \"Downloaded WordPress\"\r\n\r\n    tar xzf latest.tar.gz || { log \"Failed to extract WordPress\"; sleep 1; exit 1; }\r\n    sleep_and_log \"Extracted WordPress\"\r\n\r\n    mv wordpress\/* . || { log \"Failed to move WordPress files\"; sleep 1; exit 1; }\r\n    sleep_and_log \"Moved WordPress files\"\r\n\r\n    rm -rf wordpress latest.tar.gz || { log \"Failed to clean up WordPress installation\"; sleep 1; exit 1; }\r\n    sleep_and_log \"Cleaned up WordPress installation\"\r\n\r\n    log \"WordPress installation complete. Go to http:\/\/ip:port\/wp-admin\"\r\nfi\r\n\r\nlog \"Script completed successfully. Exiting in 1 second...\"\r\nsleep 1\r\nexit 0",
+            "container": "alpine:latest",
+            "entrypoint": "ash"
+        }
+    },
+    "variables": [
+        {
+            "name": "Startup Command",
+            "description": "The command to startup the egg \r\n(Do not change if you do not know what you are doing!)",
+            "env_variable": "STARTUP_CMD",
+            "default_value": ".\/start.sh",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "present",
+            "field_type": "text"
+        },
+        {
+            "name": "Wordpress",
+            "description": "Enable or disable Wordpress\r\n\r\n0 = false (default)\r\n1 = true",
+            "env_variable": "WORDPRESS",
+            "default_value": "0",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|boolean",
+            "field_type": "text"
+        },
+        {
+            "name": "Composer modules",
+            "description": "Specify the composer modules you want to install, separate the packages with a space\r\nyou can always add packages later..",
+            "env_variable": "COMPOSER_MODULES",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string",
+            "field_type": "text"
+        }
+    ]
+}
