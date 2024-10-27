@@ -2,7 +2,7 @@
 >
 > This respitory is rarely updated. We are not accepting pull requests, and we will not help you with using these eggs.
 
-Here we will upload all eggs we use on our [hosting](https://sillydevelopment.co.uk)
+Here we will upload all eggs we use on our [hosting](https://sillydev.co.uk)
 
 ## How to import an egg
 
