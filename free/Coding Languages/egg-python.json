@@ -1,26 +1,28 @@
 {
-    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY SILLY DEVELOPMENT - panel.sillydev.co.uk",
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY SILLY DEVELOPMENT",
     "meta": {
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2023-08-14T13:27:37+01:00",
+    "exported_at": "2024-10-27T01:15:12+01:00",
     "name": "Python",
     "author": "parker@parkervcp.com",
     "description": null,
     "features": null,
     "docker_images": {
-        "ghcr.io\/parkervcp\/yolks:python_3.10": "ghcr.io\/parkervcp\/yolks:python_3.10",
-        "ghcr.io\/parkervcp\/yolks:python_3.9": "ghcr.io\/parkervcp\/yolks:python_3.9",
-        "ghcr.io\/parkervcp\/yolks:python_3.8": "ghcr.io\/parkervcp\/yolks:python_3.8",
-        "ghcr.io\/parkervcp\/yolks:python_3.7": "ghcr.io\/parkervcp\/yolks:python_3.7",
-        "ghcr.io\/parkervcp\/yolks:python_2.7": "ghcr.io\/parkervcp\/yolks:python_2.7"
+        "ghcr.io\/silly-development\/yolks:python_3.12": "ghcr.io\/silly-development\/yolks:python_3.12",
+        "ghcr.io\/silly-development\/yolks:python_3.11": "ghcr.io\/silly-development\/yolks:python_3.11",
+        "ghcr.io\/silly-development\/yolks:python_3.10": "ghcr.io\/silly-development\/yolks:python_3.10",
+        "ghcr.io\/silly-development\/yolks:python_3.9": "ghcr.io\/silly-development\/yolks:python_3.9",
+        "ghcr.io\/silly-development\/yolks:python_3.8": "ghcr.io\/silly-development\/yolks:python_3.8",
+        "ghcr.io\/silly-development\/yolks:python_3.7": "ghcr.io\/silly-development\/yolks:python_3.7",
+        "ghcr.io\/silly-development\/yolks:python_2.7": "ghcr.io\/silly-development\/yolks:python_2.7"
     },
     "file_denylist": [],
     "startup": "if [[ -d .git ]] && [[ {{AUTO_UPDATE}} == \"1\" ]]; then git pull; fi; if [[ ! -z {{PY_PACKAGES}} ]]; then pip install -U --prefix .local {{PY_PACKAGES}}; fi; if [[ -f \/home\/container\/${REQUIREMENTS_FILE} ]]; then pip install -U --prefix .local -r ${REQUIREMENTS_FILE}; fi; \/usr\/local\/bin\/python \/home\/container\/{{PY_FILE}}",
     "config": {
         "files": "{}",
-        "startup": "{\r\n    \"done\": \":\/home\/container$\"\r\n}",
+        "startup": "{\r\n    \"done\": [\r\n        \":\/home\/container$\",\r\n        \"STARTUP \/home\/container\"\r\n    ]\r\n}",
         "logs": "{}",
         "stop": "^^C"
     },

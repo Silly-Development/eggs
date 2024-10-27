@@ -1,0 +1,42 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY SILLY DEVELOPMENT",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2024-10-27T01:15:30+01:00",
+    "name": "Bun Custom Startup",
+    "author": "gamer@sillysdev.co.uk",
+    "description": null,
+    "features": null,
+    "docker_images": {
+        "Bun Latest": "ghcr.io\/silly-development\/yolks:bun_latest"
+    },
+    "file_denylist": [],
+    "startup": "{{STARTUPSCRIPT}}",
+    "config": {
+        "files": "{}",
+        "startup": "{\r\n    \"done\": \":\/home\/container$\"\r\n}",
+        "logs": "{}",
+        "stop": "^^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\r\n# Bun App Installation Script\r\n#\r\n# Server Files: \/mnt\/server\r\napt update\r\napt install -y git curl jq file unzip make gcc g++ python python-dev libtool\r\nmkdir -p \/mnt\/server\r\ncd \/mnt\/server\r\nif [ \"${USER_UPLOAD}\" == \"true\" ] || [ \"${USER_UPLOAD}\" == \"1\" ]; then\r\necho -e \"assuming user knows what they are doing have a good day.\"\r\nexit 0\r\nfi\r\n## add git ending if it's not on the address\r\nif [[ ${GIT_ADDRESS} != *.git ]]; then\r\nGIT_ADDRESS=${GIT_ADDRESS}.git\r\nfi\r\nif [ -z \"${USERNAME}\" ] && [ -z \"${ACCESS_TOKEN}\" ]; then\r\necho -e \"using anon api call\"\r\nelse\r\nGIT_ADDRESS=\"https:\/\/${USERNAME}:${ACCESS_TOKEN}@$(echo -e ${GIT_ADDRESS} | cut -d\/ -f3-)\"\r\nfi\r\n## pull git js repo\r\nif [ \"$(ls -A \/mnt\/server)\" ]; then\r\necho -e \"\/mnt\/server directory is not empty.\"\r\nif [ -d .git ]; then\r\necho -e \".git directory exists\"\r\nif [ -f .git\/config ]; then\r\necho -e \"loading info from git config\"\r\nORIGIN=$(git config --get remote.origin.url)\r\nelse\r\necho -e \"files found with no git config\"\r\necho -e \"closing out without touching things to not break anything\"\r\nexit 10\r\nfi\r\nfi\r\nif [ \"${ORIGIN}\" == \"${GIT_ADDRESS}\" ]; then\r\necho \"pulling latest from github\"\r\ngit pull\r\nfi\r\nelse\r\necho -e \"\/mnt\/server is empty.\\ncloning files into repo\"\r\nif [ -z ${BRANCH} ]; then\r\necho -e \"cloning default branch\"\r\ngit clone ${GIT_ADDRESS} .\r\nelse\r\necho -e \"cloning ${BRANCH}'\"\r\ngit clone --single-branch --branch ${BRANCH} ${GIT_ADDRESS} .\r\nfi\r\nfi\r\necho \"Installing nodejs packages\"\r\nif [[ ! -z ${NODE_PACKAGES} ]]; then\r\nbun install ${NODE_PACKAGES}\r\nfi\r\nif [ -f \/mnt\/server\/package.json ]; then\r\nbun install --production\r\nfi\r\necho -e \"install complete\"\r\nexit 0",
+            "container": "debian:buster-slim",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "Startup Script",
+            "description": "The Startup Command",
+            "env_variable": "startupscript",
+            "default_value": "bun run index.js",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string",
+            "field_type": "text"
+        }
+    ]
+}

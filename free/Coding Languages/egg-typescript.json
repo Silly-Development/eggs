@@ -1,10 +1,10 @@
 {
-    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY SILLY DEVELOPMENT - panel.sillydev.co.uk",
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY SILLY DEVELOPMENT",
     "meta": {
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2023-08-14T13:32:56+01:00",
+    "exported_at": "2024-10-27T01:15:22+01:00",
     "name": "Typescript",
     "author": "tolfx@tolfix.com",
     "description": null,
@@ -16,7 +16,7 @@
     "startup": "\/usr\/local\/bin\/node \/home\/container\/{{BOT_JS_FILE}}; tsc; \/usr\/local\/bin\/npm install",
     "config": {
         "files": "{}",
-        "startup": "{\r\n    \"done\": \"change this part\"\r\n}",
+        "startup": "{\r\n    \"done\": \":\/home\/container$\"\r\n}",
         "logs": "{}",
         "stop": "^c"
     },

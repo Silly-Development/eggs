@@ -1,10 +1,10 @@
 {
-    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY SILLY DEVELOPMENT - panel.sillydev.co.uk",
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY SILLY DEVELOPMENT",
     "meta": {
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2023-08-14T13:32:10+01:00",
+    "exported_at": "2024-10-27T01:14:54+01:00",
     "name": "Golang",
     "author": "parker@parkervcp.com",
     "description": null,
@@ -13,7 +13,7 @@
         "ghcr.io\/parkervcp\/yolks:debian": "ghcr.io\/parkervcp\/yolks:debian"
     },
     "file_denylist": [],
-    "startup": ".\/${EXECUTABLE}",
+    "startup": "${EXECUTABLE}",
     "config": {
         "files": "{}",
         "startup": "{\r\n    \"done\": \":\/home\/container$\"\r\n}",
@@ -44,7 +44,7 @@
             "env_variable": "EXECUTABLE",
             "default_value": "PUT HERE",
             "user_viewable": true,
-            "user_editable": false,
+            "user_editable": true,
             "rules": "required|string",
             "field_type": "text"
         }
